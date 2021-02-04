@@ -44,6 +44,9 @@ func ParseFolded(r io.Reader) types.Profile {
 		v := line[sep+1:]
 
 		stack := strings.Split(s, ";")
+		for i, _ := range stack {
+            stack[i] = strings.Replace(stack[i], "|", ";", -1)
+		}
 		reverse(stack)
 
 		i, err := strconv.Atoi(v)
